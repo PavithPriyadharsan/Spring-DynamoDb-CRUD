@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class EmployeeController {
 
     @Autowired
-    public EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     @PostMapping("/employee")
     public Employee saveEmployee(@RequestBody Employee employee){
