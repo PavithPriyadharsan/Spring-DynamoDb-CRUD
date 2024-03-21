@@ -28,8 +28,8 @@ public class DynamodbConfiguration {
                 .withCredentials(
                         new AWSStaticCredentialsProvider(
                                 new BasicAWSCredentials(
-                                        "AKIAW3MECNJJ6JSNJGOE",
-                                        "RzT9Fb7xSqg06IOzIFFIE3PbEaP90QmSE/WHBXIh"
+                                        "access-key",
+                                        "secret-key"
                                 )
                         )
                 )
