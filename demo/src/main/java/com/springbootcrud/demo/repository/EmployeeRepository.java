@@ -3,11 +3,14 @@ package com.springbootcrud.demo.repository;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.springbootcrud.demo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class EmployeeRepository {
@@ -26,6 +29,11 @@ public class EmployeeRepository {
 
     public Employee getEmployeeById(String id){
         return dynamoDBMapper.load(Employee.class, id);
+    }
+
+    // Method to find all employees
+    public List<Employee> findAllEmployees() {
+        return dynamoDBMapper.scan(Employee.class, new DynamoDBScanExpression());
     }
 
     public String delete(String id){

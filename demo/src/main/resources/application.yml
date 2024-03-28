@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: Spring-DynamoDb-CRUD
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/Springboot
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+server:
+  port: 8083
+
+jwt:
+  auth:
+    converter:
+      resource-id: crud-api
+      principle-attribute: preferred_username
