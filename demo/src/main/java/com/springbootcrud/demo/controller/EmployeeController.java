@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173/")
 @RequestMapping
 public class EmployeeController {
 
@@ -17,7 +18,6 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
 
     @PostMapping("/employee")
-    @PreAuthorize("hasRole('*')")
     public Employee saveEmployee(@RequestBody Employee employee){
         return employeeRepository.save(employee);
     }
@@ -42,6 +42,7 @@ public class EmployeeController {
     }
 
     @PutMapping("employee/{id}")
+    @PreAuthorize("hasRole('client_user')")
     public String updateEmployee(@PathVariable("id") String id,@RequestBody Employee employee){
         return employeeRepository.update(id,employee);
     }
